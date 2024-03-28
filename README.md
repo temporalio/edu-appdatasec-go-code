@@ -30,7 +30,7 @@ The following links provide additional information that you may find helpful as 
 You can launch an exercise environment for this course in GitPod by 
 clicking the button below:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-converters-go-code)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/temporalio/edu-appdatasec-go-code)
 
 Alternatively, you can follow 
 [these instructions](https://learn.temporal.io/getting_started/go/dev_environment/) to 
