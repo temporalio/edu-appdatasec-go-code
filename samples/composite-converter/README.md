@@ -1,4 +1,4 @@
-# Composite Data Converters
+# Customizing the Composite Data Converter
 
 This example shows how you can customize the Composite Data Converter by adding an additional Payload Converter. This sample uses the same logic as Exercise #1, but instead of providing a Custom Codec, it provides a new Payload Converter.
 
@@ -21,7 +21,7 @@ This matches the sequence of the default Composite Data Converter, while adding 
 
 ## Part B: Using your customized Composite Converter
 
-As with the Custom Codec example, you can customize your data conversion behaivior by adding a `DataConverter` parameter t your `client.Options()` field.
+As with the Custom Codec example, you can customize your data conversion behavior by adding a `DataConverter` parameter to your `client.Options()` field.
 
 ```go
 c, err := client.Dial(client.Options{
