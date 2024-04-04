@@ -16,7 +16,7 @@ Directory Name                     | Exercise
 Samples
 | Directory Name                     | Description                                                                                                                                     |
 | :--------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `samples/composite-converter` | [Sample of how to provide an additional Payload Converter to your Composite Converter](samples/composite-converter/README.md) |
+| `samples/composite-converter` | [Customizing the Composite Data Converter](samples/composite-converter/README.md) |
 
 ## Reference
 The following links provide additional information that you may find helpful as you work through this course.
