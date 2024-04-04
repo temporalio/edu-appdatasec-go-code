@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	temporalconverters "edu-converters-go-code/exercises/codec-server/solution"
+	temporalconverters "edu-converters-go-code/exercises/custom-converter/practice"
 	"go.temporal.io/sdk/client"
 )
 
