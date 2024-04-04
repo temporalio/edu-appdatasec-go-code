@@ -35,7 +35,7 @@ the complete version in the `solution` subdirectory.
 3. Next, create an array named `codecs` in the `main()` function of
    `codec-server/main.go`. Keys should be Namespace strings. Values should be of
    the type `converter.PayloadCodec`. By default, you only need to assign the
-   `default` namespace to `{temporalconverters.NewPayloadCodec()}` from this
+   `default` Namespace to `{temporalconverters.NewPayloadCodec()}` from this
    example.
 4. After making these additions, you should have a functioning Codec Server,
    integrated with your application logic. Again, everything else in here is
