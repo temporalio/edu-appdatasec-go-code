@@ -1,4 +1,4 @@
-# Exercise 1: Implement a Custom Data Converter
+# Exercise 1: Implementing a Custom Data Converter
 
 During this exercise, you will: 
 
