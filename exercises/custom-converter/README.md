@@ -111,7 +111,7 @@ the complete version in the `solution` subdirectory.
    ```go
 	err = workflow.ExecuteActivity(ctx, Activity, input).Get(ctx, &result)
 	if err == nil {
-		err = errors.New("This is an artificial error")
+		err = errors.New("This is an artificial error") // add this statement
 		logger.Error("Activity failed.", "Error", err)
 		return "", err
 	}
