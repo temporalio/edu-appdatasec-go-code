@@ -17,7 +17,7 @@ dataConverter := converter.NewCompositeDataConverter(
 )
 ```
 
-This matches the sequence of the default Composite Data Converter, while adding a `NewCustomPayloadConverter()` as the second-to-last step before the `NewJSONPayloadConverter()`. The `NewJSONPayloadConverter()` is a fallback that serializes most values (eg strings) that are not caught by the preceding Nil/ByteSlice/Protobuf converters, so this is generally a good place to add a new Payload Converter.
+This matches the sequence of the default Composite Data Converter, while adding a `NewCustomPayloadConverter()` as the second-to-last step before the `NewJSONPayloadConverter()`. The `NewJSONPayloadConverter()` is a fallback that serializes most values (e.g., strings) that are not caught by the preceding Nil/ByteSlice/Protobuf converters, so this is generally a good place to add a new Payload Converter.
 
 ## Part B: Using your customized Composite Converter
 
