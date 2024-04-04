@@ -60,7 +60,7 @@ the complete version in the `solution` subdirectory.
    ```
 
    You should now have an idea of how this Workflow runs ordinarily — it outputs
-   the string "Received Plain text input". In the next step, you'll add a Custom
+   the string `Received Plain text input`. In the next step, you'll add a Custom
    Data Converter.
 4. To add a Custom Data Converter, you don't need to change anything in your
    Workflow code. You only need to add a `DataConverter` parameter to
