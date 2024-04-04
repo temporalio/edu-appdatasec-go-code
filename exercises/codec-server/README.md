@@ -1,4 +1,4 @@
-# Exercise 2: Deploy a Codec Server and Integrate with the Web UI
+# Exercise 2: Deploying a Codec Server
 
 During this exercise, you will:
 
