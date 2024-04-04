@@ -1,7 +1,7 @@
 # Code Repository for Securing Application Data in Temporal (Go)
 This repository provides code used for exercises and demonstrations
 included in the Go version of the 
-[Securing Application Data](https://learn.temporal.io/courses/appdatasec) 
+[Securing Application Data in Temporal](https://learn.temporal.io/courses/appdatasec) 
 training course.
 
 It's important to remember that the example code used in this course was designed to support learning a specific aspect of Temporal, not to serve as a ready-to-use template for implementing a production system.
