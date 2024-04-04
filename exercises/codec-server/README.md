@@ -43,7 +43,7 @@ the complete version in the `solution` subdirectory.
    listens on port 8081, which is usually used in testing configurations — but
    this fulfills all the requirements of a Temporal Codec Server, and you could
    incorporate any other authentication requirements on top of HTTP as needed.
-   Run your Codec Server with `go run ./codec-server` from the root of your
+   Run your Codec Server with `go run ./codec-server/main.go` from the root of your
    project directory. This will block the terminal it runs in, and await
    connections.
 5. Now you can retrieve the decoded output of your Workflow Execution from the
