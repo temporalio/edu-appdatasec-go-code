@@ -102,11 +102,12 @@ the complete version in the `solution` subdirectory.
    explicitly enable encoding these common attributes on failures. If your
    errors might contain sensitive information, you can encrypt the message and
    stack trace by configuring the default Failure Converter to use your encoded
-   attributes, in which case it moves your `message` and `stack_trace` fields to a
-   Payload that's run through your codec. To do this, you can override the
+   attributes, in which case it moves your `message` and `stack_trace` fields to
+   a Payload that's run through your codec. To do this, you can override the
    default Failure Converter with a single additional parameter,
    `EncodeCommonAttributes: true`. Make this change to `client.Dial()` where it
    is used in both `starter/main.go` and `worker/main.go`, as you did before.
+   You will also need to import `go.temporal.io/sdk/temporal` into these files.
 2. To test your Failure Converter, change your Workflow to return an artificial
    error. Change the `ExecuteActivity` call to throw an error where there isn't
    one, like so:

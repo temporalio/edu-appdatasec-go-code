@@ -4,8 +4,10 @@ import (
 	"log"
 
 	temporalconverters "edu-converters-go-code/exercises/custom-converter/practice"
+
 	"go.temporal.io/sdk/client"
 	"go.temporal.io/sdk/worker"
+	// TODO Part B: Import "go.temporal.io/sdk/temporal"
 )
 
 func main() {
