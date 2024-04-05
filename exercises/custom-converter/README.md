@@ -31,6 +31,8 @@ the complete version in the `solution` subdirectory.
    go run starter/main.go
    ```
 
+   You should receive `Received Plain text input` in this terminal.
+
 3. After that, you can use the `temporal` CLI to show the Workflow result:
 
    ```shell

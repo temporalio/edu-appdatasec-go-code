@@ -47,8 +47,14 @@ the complete version in the `solution` subdirectory.
    project directory. This will block the terminal it runs in, and await
    connections.
 5. Now you can retrieve the decoded output of your Workflow Execution from the
-   previous Exercise. From another terminal window, run `temporal workflow show \
-   -w converters_workflowID --codec-endpoint 'http://localhost:8081/{namespace}'`.
+   previous Exercise. From another terminal window, run:
+   
+   ```
+   temporal workflow show \
+      --workflow-id converters_workflowID \
+      --codec-endpoint 'http://localhost:8081/{namespace}'
+   ```
+
    It should retain the same Event History as before, with the decoded result
    appended to the output:
 
