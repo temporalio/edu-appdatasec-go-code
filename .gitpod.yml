@@ -1,4 +1,4 @@
-image: temporalio/gitpod-edu:1.1
+image: temporalio/gitpod-edu:1.2
 tasks:
     # task links a bash configuration file to a location that is not
     # specific to this course (/etc/bash.bashrc sources it from there)
@@ -64,7 +64,7 @@ ports:
     port: 8081
     onOpen: ignore
   - name: Temporal Web UI
-    port: 8233 # temporal UI
+    port: 8080 # custom port, as per --ui-port option above
     description: Temporal Web UI
     onOpen: ignore
     visibility: private
