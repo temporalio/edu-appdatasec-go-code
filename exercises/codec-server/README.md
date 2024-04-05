@@ -46,8 +46,21 @@ the complete version in the `solution` subdirectory.
    Run your Codec Server with `go run ./codec-server/main.go` from the root of your
    project directory. This will block the terminal it runs in, and await
    connections.
-5. Now you can retrieve the decoded output of your Workflow Execution from the
-   previous Exercise. From another terminal window, run:
+5. Now you can run a Workflow with data decoding. First, start the Worker:
+
+   ```shell
+   go run worker/main.go
+   ```
+
+6. Next, from another terminal, run the Workflow starter:
+
+   ```shell
+   go run starter/main.go
+   ```
+
+   The workflow should complete successfully without further modification.
+7. Finally, run `temporal workflow show` for this exercise, with a
+   `--codec-endpoint`:
    
    ```
    temporal workflow show \
