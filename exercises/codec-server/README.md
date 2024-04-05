@@ -17,27 +17,26 @@ the complete version in the `solution` subdirectory.
 ## Part A: Configure a Codec Server to Use Your Data Converter
 
 1. First, you'll review a barebones Codec Server implementation in Go, and make
-   the necessary changes to integrate the custom data converter from Exercise 1.
+   the necessary changes to integrate the Custom Data Converter from Exercise 1.
    Examine the `main.go` file in the `codec-server` subdirectory. This file
    contains a complete HTTP server implementation using the Go standard library.
    It listens on endpoints at `/{namespace}/encode` and `/{namespace}/decode` as
    expected by the Temporal CLI, Web UI, and SDKs, and contains stubs for OIDC
    and CORS enablement. These are the baseline requirements for a Temporal Codec
    Server, which can be implemented using standard HTTP functionality in any
-   language of your choosing.
-2. Temporal Codec Servers need, at minimum, one additional configuration detail
-   before they can be deployed from sample code. Specifically, Codec Servers
-   need to import the Converter logic from your own application, and then map
-   the Converter logic on a per-Namespace basis. Edit the `import()` block at
-   the top of `codec-server/main.go` to import the rest of your application as a
-   Go module named `temporalconverters`. Don't forget that you can import Go
-   modules from GitHub URLs.
-3. Next, create an array named `codecs` in the `main()` function of
+   language of your choosing. Temporal Codec Servers need, at minimum, one
+   additional configuration detail before they can be deployed from sample code.
+   Specifically, Codec Servers need to import the Converter logic from your own
+   application, and then map the Converter logic on a per-Namespace basis. Edit
+   the `import()` block at the top of `codec-server/main.go` to import the rest
+   of your application as a Go module named `temporalconverters`. Don't forget
+   that you can import Go modules from GitHub URLs.
+2. Next, create an array named `codecs` in the `main()` function of
    `codec-server/main.go`. Keys should be Namespace strings. Values should be of
    the type `converter.PayloadCodec`. By default, you only need to assign the
    `default` Namespace to `{temporalconverters.NewPayloadCodec()}` from this
    example.
-4. After making these additions, you should have a functioning Codec Server,
+3. After making these additions, you should have a functioning Codec Server,
    integrated with your application logic. Again, everything else in here is
    configured as generically as possible — note that this example Codec Server
    listens on port 8081, which is usually used in testing configurations — but
@@ -46,20 +45,21 @@ the complete version in the `solution` subdirectory.
    Run your Codec Server with `go run ./codec-server/main.go` from the root of your
    project directory. This will block the terminal it runs in, and await
    connections.
-5. Now you can run a Workflow with data decoding. First, start the Worker:
+4. Now you can run your Custom Converter Workflow with the addition of data
+   decoding. First, start the Worker:
 
    ```shell
    go run worker/main.go
    ```
 
-6. Next, from another terminal, run the Workflow starter:
+5. Next, from another terminal, run the Workflow starter:
 
    ```shell
    go run starter/main.go
    ```
 
    The workflow should complete successfully without further modification.
-7. Finally, run `temporal workflow show` for this exercise, with a
+6. Finally, run `temporal workflow show` for this exercise, with a
    `--codec-endpoint`:
    
    ```
