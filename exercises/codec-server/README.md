@@ -8,6 +8,9 @@ During this exercise, you will:
 * Integrate your Codec Server with the Temporal Web UI
 * Securely return decoded results in the CLI and the Web UI
 
+**Note: Part B of this Exercise does not work in the Gitpod Environment.**
+If you want to demonstrate Codec Server Web UI integration, you'll need to clone this repository and run the exercise locally.
+
 Make your changes to the code in the `practice` subdirectory (look for 
 `TODO` comments that will guide you to where you should make changes to 
 the code). If you need a hint or want to verify your changes, look at 
@@ -42,9 +45,13 @@ the complete version in the `solution` subdirectory.
    listens on port 8081, which is usually used in testing configurations — but
    this fulfills all the requirements of a Temporal Codec Server, and you could
    incorporate any other authentication requirements on top of HTTP as needed.
-   Run your Codec Server with `go run ./codec-server/main.go` from the root of your
-   project directory. This will block the terminal it runs in, and await
-   connections.
+   From the root of your project directory, run your Codec Server with:
+   
+   ```shell
+   go run ./codec-server/main.go
+   ```
+   
+   This will block the terminal it runs in, and await connections.
 4. Now you can run your Custom Converter Workflow with the addition of data
    decoding. First, start the Worker:
 
