@@ -16,8 +16,8 @@ the complete version in the `solution` subdirectory.
 
 1. Defining a Custom Codec is a straightforward change to your existing Worker
    and Starter code. The example in the `practice` subdirectory of this exercise
-   is missing the necessary change to use a Custom Data Converter. meaning that
-   you can run it out of the box, and produce JSON output using the Default Data
+   is missing the necessary change to use a Custom Codec, meaning that you can
+   run it out of the box, and produce JSON output using the Default Data
    Converter. You'll do this first, so you have an idea of the expected output.
    First, start the Worker:
 
@@ -63,20 +63,20 @@ the complete version in the `solution` subdirectory.
 
    You should now have an idea of how this Workflow runs ordinarily — it outputs
    the string `Received Plain text input`. In the next step, you'll add a Custom
-   Data Converter.
-4. To add a Custom Data Converter, you  need to add a `DataConverter` parameter
+   Codec.
+4. To add a Custom Codec, you need to add a `DataConverter` parameter
    to `client.Dial()`. Both your Client and your Worker perform this call, and
    you technically only need to update one of them before your Workflow runs,
    but to be safe, edit both `starter/main.go` and `worker/main.go`. Make this
    change and the save both files. You don't need to change anything in your
    Workflow code.
-5. Next, open `data_converter.go`. This contains the Custom Converter code
+5. Next, open `data_converter.go`. This contains the Custom Codec code
    you'll be using. The `Encode()` function should marshal a payload to JSON
    then compress it using Go's [snappy](https://github.com/google/snappy) codec,
    and set the file metadata. The `Decode()` function already does the same
    thing in reverse. Add the missing calls to the `Encode()` function (you can
    use the `Decode()` function as a hint). Then save the file.
-6. Now you can re-run the Workflow with your Custom Converter. Stop your Worker
+6. Now you can re-run the Workflow with your Custom Codec. Stop your Worker
    (with `Ctrl+C` in a blocking terminal) and restart it with `go run
    worker/main.go`, then re-run the Workflow with `go run starter/main.go`.
    You should once again receive `Received Plain text input`.
@@ -93,8 +93,8 @@ the complete version in the `solution` subdirectory.
   The `payload encoding is not supported` message is normal — the Temporal
   Cluster itself can't use the `Decode` function directly without a Codec
   Server, which you'll create in the next exercise. In the meantime, you have
-  successfully implemented a Custom Data Converter, and in the next step, you'll
-  add more features to it. 
+  successfully customized your Data Converter with a codec, and in the next
+  step, you'll add more features to it. 
 
 
 ## Part B: Implement a Failure Converter
