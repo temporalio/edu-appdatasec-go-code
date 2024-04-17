@@ -24,28 +24,20 @@ the complete version in the `solution` subdirectory.
    Examine the `main.go` file in the `codec-server` subdirectory. This file
    contains a complete HTTP server implementation using the Go standard library.
    It listens on endpoints at `/{namespace}/encode` and `/{namespace}/decode` as
-   expected by the Temporal CLI, Web UI, and SDKs, and contains stubs for OIDC
-   and CORS enablement. These are the baseline requirements for a Temporal Codec
-   Server, which can be implemented using standard HTTP functionality in any
-   language of your choosing. Temporal Codec Servers need, at minimum, one
-   additional configuration detail before they can be deployed from sample code.
-   Specifically, Codec Servers need to import the Converter logic from your own
-   application, and then map the Converter logic on a per-Namespace basis. Edit
-   the `import()` block at the top of `codec-server/main.go` to import the rest
-   of your application as a Go module named `temporalconverters`. Don't forget
-   that you can import Go modules from GitHub URLs.
+   expected by the Temporal CLI, Web UI, and SDKs. This Codec Server needs one
+   additional configuration detail before it can be deployed from sample code --
+   it needs to import the Codec logic from your own application, and then map
+   that logic to a Namespace URL path. Edit the `import()` block at the top of
+   `codec-server/main.go` to import the rest of your application as a Go module
+   named `temporalconverters`.
 2. Next, create an array named `codecs` in the `main()` function of
    `codec-server/main.go`. Keys should be Namespace strings. Values should be of
    the type `converter.PayloadCodec`. By default, you only need to assign the
    `default` Namespace to `{temporalconverters.NewPayloadCodec()}` from this
    example.
 3. After making these additions, you should have a functioning Codec Server,
-   integrated with your application logic. Again, everything else in here is
-   configured as generically as possible — note that this example Codec Server
-   listens on port 8081, which is usually used in testing configurations — but
-   this fulfills all the requirements of a Temporal Codec Server, and you could
-   incorporate any other authentication requirements on top of HTTP as needed.
-   From the root of your project directory, run your Codec Server with:
+   integrated with your application logic. From the root of your project
+   directory, run your Codec Server with:
    
    ```shell
    go run ./codec-server/main.go

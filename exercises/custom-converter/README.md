@@ -1,9 +1,9 @@
-# Exercise 1: Implementing a Custom Data Converter
+# Exercise 1: Implementing a Custom Codec
 
 During this exercise, you will: 
 
 * Output typical payloads from a Temporal Workflow using the default Data Converter
-* Implement a Custom Data Converter that encrypts Workflow output
+* Implement a Custom Codec that encrypts Workflow output
 * Implement a Failure Converter and demonstrate parsing its output
 
 Make your changes to the code in the `practice` subdirectory (look for 
@@ -12,14 +12,14 @@ the code). If you need a hint or want to verify your changes, look at
 the complete version in the `solution` subdirectory.
 
 
-## Part A: Implement a Custom Data Converter
+## Part A: Implement a Custom Codec
 
-1. Defining a Custom Data Converter is a straightforward change to your existing
-   Worker and Starter code. The example in the `practice` subdirectory of this
-   exercise is missing the necessary change to use a Custom Data Converter.
-   meaning that you can run it out of the box, and produce JSON output using the
-   Default Data Converter. You'll do this first, so you have an idea of the
-   expected output. First, start the Worker:
+1. Defining a Custom Codec is a straightforward change to your existing Worker
+   and Starter code. The example in the `practice` subdirectory of this exercise
+   is missing the necessary change to use a Custom Data Converter. meaning that
+   you can run it out of the box, and produce JSON output using the Default Data
+   Converter. You'll do this first, so you have an idea of the expected output.
+   First, start the Worker:
 
    ```shell
    go run worker/main.go
@@ -64,10 +64,12 @@ the complete version in the `solution` subdirectory.
    You should now have an idea of how this Workflow runs ordinarily — it outputs
    the string `Received Plain text input`. In the next step, you'll add a Custom
    Data Converter.
-4. To add a Custom Data Converter, you only need to add a `DataConverter`
-   parameter to `client.Dial()` where it is used in both `starter/main.go` and
-   `worker/main.go`. Make this change and the save both files. You don't need to
-   change anything in your Workflow code.
+4. To add a Custom Data Converter, you  need to add a `DataConverter` parameter
+   to `client.Dial()`. Both your Client and your Worker perform this call, and
+   you technically only need to update one of them before your Workflow runs,
+   but to be safe, edit both `starter/main.go` and `worker/main.go`. Make this
+   change and the save both files. You don't need to change anything in your
+   Workflow code.
 5. Next, open `data_converter.go`. This contains the Custom Converter code
    you'll be using. The `Encode()` function should marshal a payload to JSON
    then compress it using Go's [snappy](https://github.com/google/snappy) codec,
@@ -97,14 +99,8 @@ the complete version in the `solution` subdirectory.
 
 ## Part B: Implement a Failure Converter
 
-1. The next feature you may add is a Failure Converter. Failure messages and
-   stack traces are not encoded as codec-capable Payloads by default; you must
-   explicitly enable encoding these common attributes on failures. If your
-   errors might contain sensitive information, you can encrypt the message and
-   stack trace by configuring the default Failure Converter to use your encoded
-   attributes, in which case it moves your `message` and `stack_trace` fields to
-   a Payload that's run through your codec. To do this, you can override the
-   default Failure Converter with a single additional parameter,
+1. The next feature you may add is a Failure Converter. To do this, you can
+   override the default Converter with a single additional parameter,
    `EncodeCommonAttributes: true`. Make this change to `client.Dial()` where it
    is used in both `starter/main.go` and `worker/main.go`, as you did before.
    You will also need to import `go.temporal.io/sdk/temporal` into these files.
