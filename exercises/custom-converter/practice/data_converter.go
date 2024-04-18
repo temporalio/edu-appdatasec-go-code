@@ -25,14 +25,15 @@ type Codec struct{}
 func (e *Codec) Encode(payloads []*commonpb.Payload) ([]*commonpb.Payload, error) {
 	result := make([]*commonpb.Payload, len(payloads))
 	for i, p := range payloads {
-		// TODO Part A: Marshal proto to a variable that will be compressed in the next step.
+		// TODO Part A: Use the first variable from `p.Marshal()` below.
+		_, err := p.Marshal()
 		if err != nil {
 			return payloads, err
 		}
 		// TODO Part A: Compress the marshalled variable to `b` using snappy.
 		result[i] = &commonpb.Payload{
 			Metadata: map[string][]byte{converter.MetadataEncoding: []byte("binary/snappy")},
-			Data:     b,
+			// TODO Part A: Assign `b` to `Data:` in this payload.
 		}
 	}
 
