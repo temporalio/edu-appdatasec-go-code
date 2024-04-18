@@ -4,7 +4,8 @@ import (
 	"context"
 	"log"
 
-	temporalconverters "edu-converters-go-code/exercises/codec-server/solution"
+	temporalconverters "edu-converters-go-code/exercises/custom-converter/solution"
+
 	"go.temporal.io/sdk/client"
 	"go.temporal.io/sdk/temporal"
 )
@@ -45,7 +46,7 @@ func main() {
 	var result string
 	err = we.Get(context.Background(), &result)
 	if err != nil {
-		log.Fatalln("Unable get workflow result", err)
+		log.Fatalln("Unable to get workflow result", err)
 	}
 	log.Println("Workflow result:", result)
 }

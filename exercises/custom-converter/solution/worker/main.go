@@ -3,8 +3,10 @@ package main
 import (
 	"log"
 
-	temporalconverters "edu-converters-go-code/exercises/codec-server/solution"
+	temporalconverters "edu-converters-go-code/exercises/custom-converter/solution"
+
 	"go.temporal.io/sdk/client"
+	"go.temporal.io/sdk/temporal"
 	"go.temporal.io/sdk/worker"
 )
 
@@ -14,6 +16,9 @@ func main() {
 		// Set DataConverter here so that workflow and activity inputs/results will
 		// be compressed as required.
 		DataConverter: temporalconverters.DataConverter,
+		FailureConverter: temporal.NewDefaultFailureConverter(temporal.DefaultFailureConverterOptions{
+			EncodeCommonAttributes: true,
+		}),
 	})
 	if err != nil {
 		log.Fatalln("Unable to create client", err)

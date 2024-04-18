@@ -2,6 +2,7 @@ package temporalconverters
 
 import (
 	"context"
+	"errors"
 	"time"
 
 	"go.temporal.io/sdk/activity"
@@ -23,7 +24,8 @@ func Workflow(ctx workflow.Context, input string) (string, error) {
 	var result string
 
 	err := workflow.ExecuteActivity(ctx, Activity, input).Get(ctx, &result)
-	if err != nil {
+	if err == nil {
+		err = errors.New("This is an artificial error")
 		logger.Error("Activity failed.", "Error", err)
 		return "", err
 	}
