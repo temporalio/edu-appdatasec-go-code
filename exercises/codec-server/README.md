@@ -101,7 +101,7 @@ the complete version in the `solution` subdirectory.
    but it is not enabled by default. This example Codec Server exposes an
    additional command line parameter, `--web`, to conditionally enable CORS.
    Restart the Codec Server with the `--web` flag: `go run ./codec-server --web
-   localhost:8233`.
+   http://localhost:8233`.
 2. Now you can proceed to integrate your Codec Server with the Web UI. You
    should already have a local Temporal Cluster running that you can access in a
    browser at `http://localhost:8233` by default. In the top-right corner of the
