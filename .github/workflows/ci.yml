@@ -1,0 +1,49 @@
+name: Continuous Integration
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print build information
+        run: "echo head_ref: ${{ github.head_ref }}, ref: ${{ github.ref }}"
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Set up staticcheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest 
+
+      - name: Set up workflowcheck
+        run: go install go.temporal.io/sdk/contrib/tools/workflowcheck@latest
+
+      - name: Staticcheck custom-converter
+        run: staticcheck .
+        working-directory: exercises/custom-converter/solution/worker
+
+      - name: Staticcheck codec-server
+        run: staticcheck .
+        working-directory: exercises/codec-server/solution/worker
+
+      - name: Workflowcheck custom-converter
+        run: workflowcheck -show-pos .
+        working-directory: exercises/custom-converter/solution/worker
+
+      - name: Workflowcheck codec-server
+        run: workflowcheck -show-pos .
+        working-directory: exercises/codec-server/solution/worker
+
+      - name: Build custom-converter
+        run: go build
+        working-directory: exercises/custom-converter/solution/worker
+
+      - name: Build codec-server
+        run: go build
+        working-directory: exercises/codec-server/solution/worker
