@@ -72,9 +72,10 @@ the complete version in the `solution` subdirectory.
 
    ```
    ...
-   Result:
-     Status: COMPLETED
-     Output: ["Received Plain text input"]
+   Results:
+     Status          COMPLETED
+     Result          "Received Plain text input"
+     ResultEncoding  json/plain
    ```
 
    You now have a working Codec Server implementation. In the following steps,

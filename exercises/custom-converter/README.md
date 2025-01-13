@@ -41,24 +41,23 @@ the complete version in the `solution` subdirectory.
 
    ```
    Progress:
-     ID          Time                     Type
-      1  2024-01-16T17:10:53Z  WorkflowExecutionStarted
-      2  2024-01-16T17:10:53Z  WorkflowTaskScheduled
-      3  2024-01-16T17:10:53Z  WorkflowTaskStarted
-      4  2024-01-16T17:10:53Z  WorkflowTaskCompleted
-      5  2024-01-16T17:10:53Z  MarkerRecorded
-      6  2024-01-16T17:10:53Z  MarkerRecorded
-      7  2024-01-16T17:10:53Z  ActivityTaskScheduled
-      8  2024-01-16T17:10:53Z  ActivityTaskStarted
-      9  2024-01-16T17:10:53Z  ActivityTaskCompleted
-     10  2024-01-16T17:10:53Z  WorkflowTaskScheduled
-     11  2024-01-16T17:10:53Z  WorkflowTaskStarted
-     12  2024-01-16T17:10:53Z  WorkflowTaskCompleted
-     13  2024-01-16T17:10:53Z  WorkflowExecutionCompleted
+     ID           Time                     Type
+       1  2024-08-26T20:28:51Z  WorkflowExecutionStarted
+       2  2024-08-26T20:28:51Z  WorkflowTaskScheduled
+       3  2024-08-26T20:28:51Z  WorkflowTaskStarted
+       4  2024-08-26T20:28:51Z  WorkflowTaskCompleted
+       5  2024-08-26T20:28:51Z  ActivityTaskScheduled
+       6  2024-08-26T20:28:51Z  ActivityTaskStarted
+       7  2024-08-26T20:28:51Z  ActivityTaskCompleted
+       8  2024-08-26T20:28:51Z  WorkflowTaskScheduled
+       9  2024-08-26T20:28:51Z  WorkflowTaskStarted
+      10  2024-08-26T20:28:51Z  WorkflowTaskCompleted
+      11  2024-08-26T20:28:51Z  WorkflowExecutionCompleted
 
-   Result:
-     Status: COMPLETED
-     Output: ["Received Plain text input"]
+   Results:
+     Status          COMPLETED
+     Result          "Received Plain text input"
+     ResultEncoding  json/plain
    ```
 
    You should now have an idea of how this Workflow runs ordinarily — it outputs
@@ -84,16 +83,15 @@ the complete version in the `solution` subdirectory.
    converters_workflowID`. This time, your output will be encoded:
 
    ```
-   ...
-   Result:
-     Status: COMPLETED
-     Output: [encoding binary/snappy: payload encoding is not supported]
+   Results:
+     Status          COMPLETED
+     Result          {"metadata":{"encoding":"YmluYXJ5L3NuYXBweQ=="},"data":"NdAKFgoIZW5jb2RpbmcSCmpzb24vcGxhaW4SGyJSZWNlaXZlZCBQbGFpbiB0ZXh0IGlucHV0Ig=="}
+     ResultEncoding  binary/snappy
    ```
 
-  The `payload encoding is not supported` message is normal — the Temporal
-  Cluster itself can't use the `Decode` function directly without a Codec
-  Server, which you'll create in the next exercise. In the meantime, you have
-  successfully customized your Data Converter with a codec, and in the next
+  The Temporal Cluster itself can't use the `Decode` function directly without a
+  Codec Server, which you'll create in the next exercise. In the meantime, you
+  have successfully customized your Data Converter with a codec, and in the next
   step, you'll add more features to it. 
 
 
@@ -126,9 +124,10 @@ the complete version in the `solution` subdirectory.
    result, rather than a plain text error:
 
    ```
-   ...
-   Status: FAILED
-   Failure: &Failure{Message:Encoded failure,Source:GoSDK,StackTrace:,Cause:nil,FailureType:Failure_ApplicationFailureInfo,}
+   Results:
+     Status   FAILED
+     Failure
+       Message: Encoded failure
    ```
 
 
