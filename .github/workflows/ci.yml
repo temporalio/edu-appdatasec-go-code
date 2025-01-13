@@ -26,7 +26,7 @@ jobs:
 
       - name: Staticcheck custom-converter
         run: staticcheck .
-        working-directory: exercises/customer-converter/solution/worker
+        working-directory: exercises/custom-converter/solution/worker
 
       - name: Staticcheck codec-server
         run: staticcheck .
