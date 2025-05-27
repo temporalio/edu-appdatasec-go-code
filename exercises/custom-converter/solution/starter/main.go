@@ -17,6 +17,7 @@ func main() {
 		// encoded as required.
 		DataConverter: temporalconverters.DataConverter,
 		FailureConverter: temporal.NewDefaultFailureConverter(temporal.DefaultFailureConverterOptions{
+			DataConverter: temporalconverters.DataConverter,
 			EncodeCommonAttributes: true,
 		}),
 	})
