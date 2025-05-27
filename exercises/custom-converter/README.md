@@ -98,7 +98,7 @@ the complete version in the `solution` subdirectory.
 ## Part B: Implement a Failure Converter
 
 1. The next feature you may add is a Failure Converter. To do this, you can
-   override the default Converter with a single additional parameter,
+   override the default Converter by providing the parameter `DataConverter` with your custom Codec. To make sure the Error Message gets encoded, you also need provide an additional parameter,
    `EncodeCommonAttributes: true`. Make this change to `client.Dial()` where it
    is used in both `starter/main.go` and `worker/main.go`, as you did before.
    You will also need to import `go.temporal.io/sdk/temporal` into these files.
