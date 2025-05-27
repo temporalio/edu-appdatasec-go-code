@@ -17,6 +17,7 @@ func main() {
 		// be compressed as required.
 		DataConverter: temporalconverters.DataConverter,
 		FailureConverter: temporal.NewDefaultFailureConverter(temporal.DefaultFailureConverterOptions{
+			DataConverter: temporalconverters.DataConverter,
 			EncodeCommonAttributes: true,
 		}),
 	})
